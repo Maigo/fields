@@ -5,15 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- The Basics -->
-    <groupId>maigo.fields</groupId>
-    <artifactId>fileds-base</artifactId>
+    <groupId>com.maigo.fields</groupId>
+    <artifactId>fields-base</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>fileds-base</name>
+    <name>fields-base</name>
 
     <!-- base properties -->
-    <properties></properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <modules>
         <module>fields-js-core</module>

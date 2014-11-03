@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- The Basics -->
-    <artifactId>fileds-js-core</artifactId>
+    <artifactId>fields-js-demo-cube</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jszip</packaging>
 
-    <name>fileds-js-core</name>
+    <name>fields-js-demo-cube</name>
 
     <parent>
-        <groupId>maigo.fields</groupId>
-        <artifactId>fileds-base</artifactId>
+        <groupId>com.maigo.fields</groupId>
+        <artifactId>fields-base</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
