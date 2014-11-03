@@ -9,6 +9,7 @@ module com.maigo.mvc.task {
         private _state:com.maigo.state.core.IStateCore;
 
         public constructor() {
+            super();
             this.setupStateCore();
         }
 
