@@ -1,0 +1,14 @@
+{
+    "name": "fields",
+    "version": "1.0.0-SNAPSHOT",
+    "authors": [
+        "Teodor Jakobsson <teodor.jakobsson@netlight.com>"
+    ],
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "threejs": "*",
+        "dijon": "*",
+        "requirejs": "*"
+    }
+}

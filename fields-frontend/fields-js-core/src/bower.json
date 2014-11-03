@@ -1,0 +1,12 @@
+{
+    "name": "fields-js-core",
+    "version": "1.0.0-SNAPSHOT",
+    "authors": [
+        "Teodor Jakobsson <teodor.jakobsson@netlight.com>"
+    ],
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "dijon": "*"
+    }
+}
