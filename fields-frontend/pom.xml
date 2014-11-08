@@ -18,8 +18,9 @@
     </properties>
 
     <modules>
+        <module>fields-js-base</module>
         <module>fields-js-core</module>
-        <module>fields-web-client</module>
+        <module>fields-js-view</module>
     </modules>
 
     <scm>

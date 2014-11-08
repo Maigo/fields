@@ -13,148 +13,50 @@
 
     <parent>
         <groupId>com.maigo.fields</groupId>
-        <artifactId>fields-base</artifactId>
+        <artifactId>fields-js-base</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../fields-js-base</relativePath>
     </parent>
 
     <!-- module properties -->
-    <properties>
-        <grunt-maven-plugin.version>1.4.1</grunt-maven-plugin.version>
-        <jszip-maven-plugin.version>0.1-alpha-9</jszip-maven-plugin.version>
-    </properties>
+    <properties></properties>
 
     <!-- build configuration -->
     <build>
+        <sourceDirectory>${basedir}/src/src/main</sourceDirectory>
+        <testSourceDirectory>${basedir}/src/src/test</testSourceDirectory>
+
         <plugins>
+            <!-- delegate build to Grunt -->
             <plugin>
                 <groupId>pl.allegro</groupId>
                 <artifactId>grunt-maven-plugin</artifactId>
-                <version>${grunt-maven-plugin.version}</version>
-                <configuration>
-                    <!--<showColors>true</showColors>-->
-                    <sourceDirectory>${basedir}/src</sourceDirectory>
-                    <jsSourceDirectory>.</jsSourceDirectory>
-                    <gruntBuildDirectory>${project.build.directory}/grunt</gruntBuildDirectory>
-                </configuration>
-                <executions>
-                    <!-- Maven "validate" phase: Prepare everything that is required to run grunt -->
-                    <execution>
-                        <id>grunt-npm</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>create-resources</goal>
-                            <goal>npm</goal>
-                        </goals>
-                    </execution>
-
-                    <!-- Maven "generate-sources" phase: Run bower to install source dependencies -->
-                    <execution>
-                        <id>grunt-bower</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>bower</goal>
-                        </goals>
-                    </execution>
-
-                    <!-- Maven "compile" phase: Do the real stuff by running grunt with target "compile" -->
-                    <execution>
-                        <id>grunt-compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>grunt</goal>
-                        </goals>
-                        <configuration>
-                            <target>compile</target>
-                        </configuration>
-                    </execution>
-
-                    <!-- Maven "test" phase: Run grunt with target "test" -->
-                    <execution>
-                        <id>grunt-test</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>grunt</goal>
-                        </goals>
-                        <configuration>
-                            <target>test</target>
-                        </configuration>
-                    </execution>
-
-                    <!-- Maven "(prepare-)package" phase: Run grunt with target "package" -->
-                    <execution>
-                        <id>grunt-package</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>grunt</goal>
-                        </goals>
-                        <configuration>
-                            <target>package</target>
-                        </configuration>
-                    </execution>
-
-                    <!-- Maven "clean" phase: Don't forget to clean bower stuff too -->
-                    <execution>
-                        <id>grunt-clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <!-- prepare distribution by copying files in a maven compliant structure -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <id>prepare-package-javascript</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <!-- Copy all generated javascript files into the final directory structure -->
-                            <outputDirectory>${project.build.outputDirectory}/${project.artifactId}</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <!-- the directory that is populated by Grunt -->
-                                    <directory>${project.build.directory}/grunt/target/js</directory>
-                                    <includes>
-                                        <include>**/*.js</include>
-                                        <include>**/*.map</include>
-                                        <include>**/*.d.ts</include>
-                                    </includes>
-                                    <filtering>false</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
 
-            <!-- Package files in a JSZIP archive -->
+            <!-- unpack dependencies and pack final artifact as JSZIP archive -->
             <plugin>
                 <groupId>org.jszip.maven</groupId>
                 <artifactId>jszip-maven-plugin</artifactId>
-                <version>${jszip-maven-plugin.version}</version>
-                <extensions>true</extensions>
             </plugin>
         </plugins>
     </build>
 
     <!-- build dependencies -->
     <dependencies>
+        <!-- external dependencies -->
         <dependency>
             <groupId>pl.allegro</groupId>
             <artifactId>grunt-maven-plugin</artifactId>
-            <version>${grunt-maven-plugin.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jszip.maven</groupId>
             <artifactId>jszip-maven-plugin</artifactId>
-            <version>${jszip-maven-plugin.version}</version>
         </dependency>
     </dependencies>
 

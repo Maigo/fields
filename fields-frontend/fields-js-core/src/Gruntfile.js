@@ -32,7 +32,7 @@ module.exports = function (grunt) {
         typescript: {
             compile: {
                 src: ['<%= properties.src.main %>/**/*.ts'],
-                dest: '<%= properties.tar.main %>/<%= pkg.name %>.<%= pkg.version %>.js',
+                dest: '<%= properties.tar.main %>/<%= pkg.name %>.js',
                 options: {
                     basePath: '<%= properties.src.main %>',
                     module: 'amd',
@@ -103,6 +103,7 @@ module.exports = function (grunt) {
     // ----- Setup maven tasks
     grunt.registerTask('compile', ['typescript:compile', 'copy:libs']);
     grunt.registerTask('test', ['typescript:compile_test', 'copy:libs', 'jasmine']);
-    grunt.registerTask('package', ['uglify']);
+//    grunt.registerTask('package', ['uglify']);
+    grunt.registerTask('package', []);
 };
 
